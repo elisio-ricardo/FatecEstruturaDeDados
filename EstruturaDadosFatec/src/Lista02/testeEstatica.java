@@ -1,4 +1,4 @@
-package ListaDois;
+package Lista02;
 
 public class testeEstatica {
 
