@@ -1,4 +1,4 @@
-package ListaUm;
+package Lista01;
 
 public class exercicio08 {
 
