@@ -8,6 +8,7 @@ public class testeEstatica {
 		
 		System.out.println(estatica.vazia());
 		System.out.println(estatica.cheia());
+		estatica.adicionaFinal(5);
 	}
 
 }
