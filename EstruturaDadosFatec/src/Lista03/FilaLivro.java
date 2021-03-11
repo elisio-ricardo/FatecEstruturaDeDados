@@ -21,21 +21,24 @@ public class FilaLivro {
 
 	public void pop() {
 		if (tamanho != 0) {
-			for (int i = 0; i < dados.length; i++) {
+			for (int i = 0; i < tamanho; i++) {
 				dados[i] = dados[i + 1];
 			}
 			tamanho--;
 		} else {
-			System.out.println("ERRO, Lista Vazia");
+			System.out.println("ERRO, Pilha Vazia");
 		}
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder s = new StringBuilder();
-
-		for (int i = 0; i < tamanho; i++) {
-			s.append("Titulo : " + dados[i].getTitulo() + ", Quantidade: " + dados[i].quantidade + "\n");
+		if (tamanho != 0) {
+			for (int i = 0; i < tamanho; i++) {
+				s.append("Titulo : " + dados[i].getTitulo() + ", Quantidade: " + dados[i].quantidade + "\n");
+			}
+		} else {
+			System.out.println("ERRO, Pilha Vazia");
 		}
 		return s.toString();
 	}

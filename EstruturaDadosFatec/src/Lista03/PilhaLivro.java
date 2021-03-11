@@ -14,25 +14,28 @@ public class PilhaLivro {
 		if (tamanho < dados.length) {
 			dados[tamanho] = elemento;
 			tamanho++;
-		}else {
+		} else {
 			System.out.println("ERRO, Lista Cheia");
 		}
 	}
-	
+
 	public void pop() {
-		if(tamanho != 0) {
+		if (tamanho != 0) {
 			tamanho--;
-		}else {
-			System.out.println("ERRO, Lista Vazia");
+		} else {
+			System.out.println("ERRO, Pilha Vazia");
 		}
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder s = new StringBuilder();
-		
-		for (int i = 0; i < tamanho; i++) {
-			s.append("Titulo : "+ dados[i].getTitulo() + ", Quantidade: " + dados[i].quantidade + "\n");
+		if (tamanho != 0) {
+			for (int i = 0; i < tamanho; i++) {
+				s.append("Titulo : " + dados[i].getTitulo() + ", Quantidade: " + dados[i].quantidade + "\n");
+			}
+		} else {
+			System.out.println("ERRO, Pilha Vazia");
 		}
 		return s.toString();
 	}

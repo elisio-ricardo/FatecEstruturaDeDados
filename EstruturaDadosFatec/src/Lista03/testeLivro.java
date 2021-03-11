@@ -17,7 +17,7 @@ public class testeLivro {
 
 			opc = Integer
 					.parseInt(JOptionPane.showInputDialog("Digite a opção desejada: \n" + "1 - Adiciona livro Pilha \n"
-							+ "2 - Retira livro Pilha \n" + "3 - Mostrar Pilha; 4 - Adiciona livro Fila \n"
+							+ "2 - Retira livro Pilha \n" + "3 - Mostrar Pilha \n4 - Adiciona livro Fila \n"
 							+ "5 - Retira livro Fila \n" + "6 - Mostrar Fila;\n" + "9 - Finalizar Aplicação."));
 
 			switch (opc) {
