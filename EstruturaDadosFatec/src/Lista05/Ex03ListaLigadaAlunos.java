@@ -21,6 +21,7 @@ public class Ex03ListaLigadaAlunos {
 		if (inicio == null) {
 			Ex03NoAlunos t = new Ex03NoAlunos(n);
 			inicio = t;
+			t.prox = null;
 		} else {
 			Ex03NoAlunos aux = inicio;
 			while (aux.prox != null) {
@@ -79,13 +80,15 @@ public class Ex03ListaLigadaAlunos {
 				Ex03NoAlunos aux1 = inicio;
 				Ex03NoAlunos aux2 = inicio;
 
-				while (aux1.prox != null) {
-					aux2 = aux1;
-					aux1 = aux1.prox;
-				}
-
-				n = aux1.aluno;
-				aux2.prox = null;
+				n = recursivoRemoveFinal(aux1, aux2);// Envia dois objetos para remover no final, e retorna o elemento
+														// removido
+//				while (aux1.prox != null) {
+//					aux2 = aux1;
+//					aux1 = aux1.prox;
+//				}
+//
+//				n = aux1.aluno;
+//				aux2.prox = null;
 
 			}
 		}
@@ -100,15 +103,16 @@ public class Ex03ListaLigadaAlunos {
 
 		if (inicio == null) {
 			JOptionPane.showMessageDialog(null, "ERRO, Lista Vázia");
-			return n;
 		}
 		if (pos == i) {
 			n = removeInicio();
 		} else {
-			while (aux.prox != null) {
-				aux = aux.prox;
-				i++;
-			}
+
+			i = recursivoValidaPos(aux, i);//Percorre toda a lista para retornar o tamanho da lista e validar a pos
+//			while (aux.prox != null) {
+//				aux = aux.prox;
+//				i++;
+//			}
 			if (pos > i || pos <= 0) {
 				JOptionPane.showMessageDialog(null, "ERRO, Posição Invalida");
 				return n;
@@ -116,17 +120,19 @@ public class Ex03ListaLigadaAlunos {
 				n = removeFinal();
 				return n;
 			} else {
+				i = 1;
 				aux = inicio;
 				Ex03NoAlunos aux2 = aux;
 
-				while (pos > 1) {
-					aux2 = aux;
-					aux = aux.prox;
-					pos--;
-				}
-				n = aux.aluno;
-				aux2.prox = aux.prox;
-				return n;
+				n = recursivoRemove(aux, aux2, pos, i);//Percorre a lista e Remove o elemento na posição enviada
+//				while (pos > 1) {
+//					aux2 = aux;
+//					aux = aux.prox;
+//					pos--;
+//				}
+//				n = aux.aluno;
+//				aux2.prox = aux.prox;
+//				return n;
 			}
 		}
 		return n;
@@ -150,6 +156,38 @@ public class Ex03ListaLigadaAlunos {
 			JOptionPane.showMessageDialog(null, s.toString());
 		}
 
+	}
+
+	private int recursivoValidaPos(Ex03NoAlunos aux, int i) {
+		if (aux.prox == null) {
+			return i;
+		}
+
+		aux = aux.prox;
+		return recursivoValidaPos(aux, i + 1);
+	}
+
+	private Ex03Alunos recursivoRemove(Ex03NoAlunos aux, Ex03NoAlunos aux2, int pos, int i) {
+
+		if (pos == i) {
+			aux2.prox = aux.prox;
+			return aux.aluno;
+		}
+		aux2 = aux;
+		aux = aux.prox;
+
+		return recursivoRemove(aux, aux2, pos, i + 1);
+	}
+
+	private Ex03Alunos recursivoRemoveFinal(Ex03NoAlunos aux1, Ex03NoAlunos aux2) {
+		if (aux1.prox == null) {
+			aux2.prox = null;
+			return aux1.aluno;
+		}
+		aux2 = aux1;
+		aux1 = aux1.prox;
+
+		return recursivoRemoveFinal(aux1, aux2);
 	}
 
 }

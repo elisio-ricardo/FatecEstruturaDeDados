@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 public class Ex02ListaLigadaTemperatura {
 
-	private Ex02No inicio;
+	private Ex02NoTemperatura inicio;
 
 	public Ex02ListaLigadaTemperatura() {
 		inicio = null;
@@ -18,32 +18,32 @@ public class Ex02ListaLigadaTemperatura {
 	}
 
 	public void adicionaInicio(int n) {
-		Ex02No t = new Ex02No(n);
+		Ex02NoTemperatura t = new Ex02NoTemperatura(n);
 		t.prox = inicio;
 		inicio = t;
 	}
 
 	public void adicionaFinal(int n) {
 		if (inicio == null) {
-			Ex02No t = new Ex02No(n);
+			Ex02NoTemperatura t = new Ex02NoTemperatura(n);
 			inicio = t;
 		} else {
-			Ex02No aux = inicio;
+			Ex02NoTemperatura aux = inicio;
 			while (aux.prox != null) {
 				aux = aux.prox;
 			}
-			Ex02No t = new Ex02No(n);
+			Ex02NoTemperatura t = new Ex02NoTemperatura(n);
 			aux.prox = t;
 		}
 	}
 
 	public void adicionaPosicao(int n, int pos) {
-		Ex02No t = new Ex02No(n);
+		Ex02NoTemperatura t = new Ex02NoTemperatura(n);
 
 		if (pos == 1) {
 			adicionaInicio(n);
 		} else {
-			Ex02No aux = inicio;
+			Ex02NoTemperatura aux = inicio;
 			int count = 1;
 
 			while (aux.prox != null && count < pos - 1) {
@@ -81,16 +81,19 @@ public class Ex02ListaLigadaTemperatura {
 				n = inicio.temp;
 				inicio = null;
 			} else {
-				Ex02No aux1 = inicio;
-				Ex02No aux2 = inicio;
+				Ex02NoTemperatura aux1 = inicio;
+				Ex02NoTemperatura aux2 = inicio;
 
-				while (aux1.prox != null) {
-					aux2 = aux1;
-					aux1 = aux1.prox;
-				}
+				n = recursivoRemoveFinal(aux1, aux2); // Analisa toda a lista até encontrar o fim e remover o ultimo
+														// elemento.
 
-				n = aux1.temp;
-				aux2.prox = null;
+//				while (aux1.prox != null) {
+//					aux2 = aux1;
+//					aux1 = aux1.prox;
+//				}
+//
+//				n = aux1.temp;
+//				aux2.prox = null;
 
 			}
 		}
@@ -101,19 +104,24 @@ public class Ex02ListaLigadaTemperatura {
 		int n = -1;
 		int i = 1;
 
-		Ex02No aux = inicio;
+		Ex02NoTemperatura aux = inicio;
 
 		if (inicio == null) {
 			JOptionPane.showMessageDialog(null, "Lista Vázia");
 			return n;
 		}
+
 		if (pos == i) {
 			n = removeInicio();
 		} else {
-			while (aux.prox != null) {
-				aux = aux.prox;
-				i++;
-			}
+
+			i = recursivoValidaPos(aux, i);// Envia a Lista e o i para retornar se a posição é valida. E retorna o
+											// tamanho da lista
+//			while (aux.prox != null) {
+//				aux = aux.prox;
+//				i++;
+//			}
+
 			if (pos > i || pos <= 0) {
 				JOptionPane.showMessageDialog(null, "Posição Invalida");
 				return n;
@@ -122,23 +130,57 @@ public class Ex02ListaLigadaTemperatura {
 				return n;
 			} else {
 				aux = inicio;
-				Ex02No aux2 = aux;
-
-				while (pos > 1) {
-					aux2 = aux;
-					aux = aux.prox;
-					pos--;
-				}
-				n = aux.temp;
-				aux2.prox = aux.prox;
+				i = 1;
+				Ex02NoTemperatura aux2 = aux;
+				n = recursivoRemove(aux, aux2, pos, i);// Percorre a Lista até chegar na posição de remoção e retorna o
+														// elemento removido
+//				while ( pos != i ) {
+//					aux2 = aux;
+//					aux = aux.prox;
+//					i++;
+//				}
+//				n = aux.temp;
+//				aux2.prox = aux.prox;
 				return n;
 			}
 		}
 		return n;
 	}
-	
+
+	private int recursivoValidaPos(Ex02NoTemperatura aux, int i) {
+		if (aux.prox == null) {
+			return i;
+		}
+
+		aux = aux.prox;
+		return recursivoValidaPos(aux, i + 1);
+	}
+
+	private int recursivoRemove(Ex02NoTemperatura aux, Ex02NoTemperatura aux2, int pos, int i) {
+
+		if (pos == i) {
+			aux2.prox = aux.prox;
+			return aux.temp;
+		}
+		aux2 = aux;
+		aux = aux.prox;
+
+		return recursivoRemove(aux, aux2, pos, i + 1);
+	}
+
+	private int recursivoRemoveFinal(Ex02NoTemperatura aux1, Ex02NoTemperatura aux2) {
+		if (aux1.prox == null) {
+			aux2.prox = null;
+			return aux1.temp;
+		}
+		aux2 = aux1;
+		aux1 = aux1.prox;
+
+		return recursivoRemoveFinal(aux1, aux2);
+	}
+
 	public String percorre() {
-		Ex02No aux = inicio;
+		Ex02NoTemperatura aux = inicio;
 		String r = " ";
 		while (aux != null) {
 			r = r + "\n" + aux.temp + "°C";
@@ -146,6 +188,5 @@ public class Ex02ListaLigadaTemperatura {
 		}
 		return r;
 	}
-	
 
 }

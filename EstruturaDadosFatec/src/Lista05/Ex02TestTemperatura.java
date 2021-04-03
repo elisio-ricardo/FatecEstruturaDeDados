@@ -42,6 +42,7 @@ public class Ex02TestTemperatura {
 				break;
 			case 7:
 				JOptionPane.showMessageDialog(null, "Lista Temperaturas: " + t.percorre());
+
 				break;
 			case 9:
 				JOptionPane.showMessageDialog(null, "Finalizando");

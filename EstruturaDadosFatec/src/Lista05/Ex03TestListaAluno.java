@@ -58,14 +58,16 @@ public class Ex03TestListaAluno {
 			case 5:
 				elemento = a.removeInicio();
 				if (elemento != null) {
-					JOptionPane.showMessageDialog(null, "O elemento removido foi:" + elemento);
+					JOptionPane.showMessageDialog(null, "O elemento removido foi: " + "RA: " + elemento.getRa() + ", Nome: " + elemento.getNome() + ", Turma: "
+							+ elemento.getTurma() + ", Semestre: " + elemento.getSemestre() + "\n");
 				}
 				break;
 			case 6:
 				pos = Integer.parseInt(JOptionPane.showInputDialog("Informe a posição"));
 				elemento = a.removePosicao(pos);
 				if (elemento != null) {
-					JOptionPane.showMessageDialog(null, "O elemento removido foi: " + elemento);
+					JOptionPane.showMessageDialog(null, "O elemento removido foi: " + "RA: " + elemento.getRa() + ", Nome: " + elemento.getNome() + ", Turma: "
+							+ elemento.getTurma() + ", Semestre: " + elemento.getSemestre() + "\n");
 				}
 				break;
 			case 7:
