@@ -1,4 +1,4 @@
-package Lista08;
+package Lista08Ex3;
 
 public class NoMedia {
 

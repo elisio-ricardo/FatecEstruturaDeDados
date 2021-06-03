@@ -1,4 +1,4 @@
-package Lista08;
+package Lista08Ex3;
 import javax.swing.JOptionPane;
 
 public class Main {
