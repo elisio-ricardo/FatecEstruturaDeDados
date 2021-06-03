@@ -1,4 +1,4 @@
-package Lista08Ex3;
+package Lista08Ex03;
 
 public class NoAluno {
 

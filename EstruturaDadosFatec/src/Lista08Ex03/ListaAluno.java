@@ -1,16 +1,16 @@
-package Lista08Ex3;
+package Lista08Ex03;
 import javax.swing.JOptionPane;
 
-public class ListaDisciplina {
+public class ListaAluno {
 
-	private NoDisciplina inicio;
+	private NoAluno inicio;
 
-	public ListaDisciplina() {
+	public ListaAluno() {
 		this.inicio = null;
 	}
 
-	public void adicionaInicio(Disciplina a) {
-		NoDisciplina al = new NoDisciplina(a);
+	public void adicionaInicio(Aluno a) {
+		NoAluno al = new NoAluno(a);
 		if (inicio != null) {
 			al.prox = inicio;
 			inicio.anterior = al;
@@ -18,14 +18,14 @@ public class ListaDisciplina {
 		inicio = al;
 	}
 
-	public void adicionaFinal(Disciplina n) {
-		NoDisciplina c = new NoDisciplina(n);
+	public void adicionaFinal(Aluno n) {
+		NoAluno c = new NoAluno(n);
 		if (inicio == null) {
 			inicio = c;
 			c.anterior = null;
 			c.prox = null;
 		} else {
-			NoDisciplina aux = inicio;
+			NoAluno aux = inicio;
 			while (aux.prox != null) {
 				aux = aux.prox;
 			}
@@ -35,13 +35,13 @@ public class ListaDisciplina {
 		}
 	}
 
-	public Disciplina removeInicio() {
-		Disciplina c = null;
+	public Aluno removeInicio() {
+		Aluno c = null;
 
 		if (inicio == null) {
 			JOptionPane.showMessageDialog(null, "ERRO, Lista Vázia");
 		} else {
-			c = inicio.disciplina;
+			c = inicio.aluno;
 			inicio = inicio.prox;
 			if (inicio != null) {
 				inicio.anterior = null;
@@ -51,24 +51,24 @@ public class ListaDisciplina {
 		return c;
 	}
 
-	public Disciplina removefinal() {
-		Disciplina c = null;
+	public Aluno removefinal() {
+		Aluno c = null;
 
 		if (inicio == null) {
 			JOptionPane.showMessageDialog(null, "ERRO, Lista Vázia");
 		} else {
 			if (inicio.prox == null) {
-				c = inicio.disciplina;
+				c = inicio.aluno;
 				inicio = null;
 			} else {
-				NoDisciplina aux1 = inicio;
-				NoDisciplina aux2 = null;
+				NoAluno aux1 = inicio;
+				NoAluno aux2 = null;
 
 				while (aux1.prox != null) {
 					aux2 = aux1;
 					aux1 = aux1.prox;
 				}
-				c = aux1.disciplina;
+				c = aux1.aluno;
 				aux2.prox.anterior = null;
 				aux2.prox = null;
 			}
@@ -82,12 +82,12 @@ public class ListaDisciplina {
 		if (inicio == null) {
 			JOptionPane.showMessageDialog(null, "Lista vazia");
 		} else {
-			NoDisciplina aux = inicio;
+			NoAluno aux = inicio;
 			StringBuffer s = new StringBuffer();
 
 			while (aux != null) {
-				s.append("ID: " + aux.disciplina.getId() + "| Nome da disciplina: " + aux.disciplina.getNomeDisciplina()
-						+ "\n");
+				s.append("ID: " + aux.aluno.getId() + "| Nome: " + aux.aluno.getNomeCompleto() + "| Curso: "
+						+ aux.aluno.getCurso() + "| Semestre: " + aux.aluno.getSemestre() + "\n");
 				aux = aux.prox;
 			}
 			JOptionPane.showMessageDialog(null, s.toString());
@@ -95,17 +95,16 @@ public class ListaDisciplina {
 	}
 
 	public String percorrer(int id) {
-
 		if (inicio == null) {
 			JOptionPane.showMessageDialog(null, "Lista vazia");
 			return null;
 		} else {
-			NoDisciplina aux = inicio;
+			NoAluno aux = inicio;
 			StringBuffer s = new StringBuffer();
 
 			while (aux != null) {
-				s.append("ID: " + aux.disciplina.getId() + "| Nome da disciplina: " + aux.disciplina.getNomeDisciplina()
-						+ "\n");
+				s.append("ID: " + aux.aluno.getId() + "| Nome: " + aux.aluno.getNomeCompleto() + "| Curso: "
+						+ aux.aluno.getCurso() + "| Semestre: " + aux.aluno.getSemestre() + "\n");
 				aux = aux.prox;
 			}
 			return s.toString();
@@ -117,11 +116,11 @@ public class ListaDisciplina {
 			JOptionPane.showMessageDialog(null, "Lista vazia");
 			return null;
 		} else {
-			NoDisciplina aux = inicio;
+			NoAluno aux = inicio;
 
 			while (aux != null) {
-				if (aux.disciplina.getId() == id) {
-					return aux.disciplina.getNomeDisciplina();
+				if (aux.aluno.getId() == id) {
+					return aux.aluno.getNomeCompleto();
 				}
 				aux = aux.prox;
 			}
