@@ -1,6 +1,6 @@
 package Lista01;
 
-public class exercicio06 {
+public class Exercicio06Fatorial {
 
 	public static void main(String[] args) {
 

@@ -1,6 +1,6 @@
 package Lista01;
 
-public class exercicio07 {
+public class Exercicio07SomandoRecursividade {
 
 	public static void main(String[] args) {
 		int soma = Somando(1);

@@ -1,6 +1,6 @@
 package Lista01;
 
-public class exercicio10 {
+public class Exercicio12Fibonacci {
 
 	public static void main(String[] args) {
 

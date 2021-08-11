@@ -2,7 +2,7 @@ package Lista01;
 
 import javax.swing.JOptionPane;
 
-public class exercicio05 {
+public class Exercicio05Matriz {
 
 	public static void main(String[] args) {
 

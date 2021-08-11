@@ -1,6 +1,6 @@
 package Lista01;
 
-public class exercicio09 {
+public class Exercicio08SomandoPares200Recursividade {
 
 	public static void main(String[] args) {
 
@@ -11,10 +11,10 @@ public class exercicio09 {
 
 	private static int SomandoPares(int num) {
 
-		if (num == 300) {
-			return 0;
+		if (num == 200) {
+			return 200;
 		}
-		if (num % 2 == 0) {
+		if (num % 2 != 0) {
 			return SomandoPares(num + 1);
 		}
 		return num + SomandoPares(num + 1);

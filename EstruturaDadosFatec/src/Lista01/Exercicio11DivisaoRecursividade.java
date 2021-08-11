@@ -1,6 +1,6 @@
 package Lista01;
 
-public class exercicio11 {
+public class Exercicio11DivisaoRecursividade {
 
 	public static void main(String[] args) {
 
